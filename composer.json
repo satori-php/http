@@ -15,9 +15,6 @@
     "autoload": {
         "psr-4": {
             "Satori\\Http\\": ["src/", "tests/"]
-        },
-        "files": [
-            "vendor/satori/http/src/request.php"
-        ]
+        }
     }
 }
