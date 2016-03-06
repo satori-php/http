@@ -1,7 +1,7 @@
 {
     "name": "satori/http",
-    "description": "",
-    "keywords": [""],
+    "description": "HTTP",
+    "keywords": ["HTTP"],
     "license": "MIT",
     "authors": [
         {
