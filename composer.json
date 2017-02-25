@@ -1,7 +1,7 @@
 {
     "name": "satori/http",
     "description": "HTTP components",
-    "keywords": ["HTTP", "Request", "Response", "Session"],
+    "keywords": ["Satori", "HTTP", "Request", "Response", "Session"],
     "license": "MIT",
     "authors": [
         {
@@ -15,6 +15,11 @@
     "autoload": {
         "psr-4": {
             "Satori\\Http\\": ["src/", "tests/"]
-        }
+        },
+        "files": [
+            "src/request.php",
+            "src/response.php",
+            "src/session.php"
+        ]
     }
 }
