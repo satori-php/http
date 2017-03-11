@@ -1,7 +1,7 @@
 {
     "name": "satori/http",
     "description": "HTTP components",
-    "keywords": ["Satori", "HTTP", "Request", "Response", "Session"],
+    "keywords": ["Satori", "http", "request", "response", "session"],
     "license": "MIT",
     "authors": [
         {
