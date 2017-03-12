@@ -10,6 +10,11 @@ declare(strict_types=1);
 
 namespace Satori\Http\Request;
 
+/**
+ * Checks if a request was received through the HTTPS protocol.
+ *
+ * @return bool
+ */
 function isHttps(): bool
 {
     if (!empty($_SERVER['HTTPS']) && 'off' !== $_SERVER['HTTPS']) {
@@ -19,16 +24,31 @@ function isHttps(): bool
     return false;
 }
 
+/**
+ * Returns HTTP protocol version.
+ *
+ * @return string
+ */
 function getProtocol(): string
 {
     return $_SERVER['SERVER_PROTOCOL'];
 }
 
+/**
+ * Returns request method.
+ *
+ * @return string
+ */
 function getMethod(): string
 {
     return $_SERVER['REQUEST_METHOD'];
 }
 
+/**
+ * Returns request scheme.
+ *
+ * @return string
+ */
 function getScheme(): string
 {
     return $_SERVER['REQUEST_SCHEME'];
@@ -39,21 +59,41 @@ function getHost(): string
     return $_SERVER['HTTP_HOST'];
 }
 
+/**
+ * Returns server name.
+ *
+ * @return string
+ */
 function getServerName(): string
 {
     return $_SERVER['SERVER_NAME'];
 }
 
+/**
+ * Returns server port.
+ *
+ * @return string
+ */
 function getServerPort(): string
 {
     return $_SERVER['SERVER_PORT'];
 }
 
+/**
+ * Returns request URI.
+ *
+ * @return string
+ */
 function getUri(): string
 {
     return $_SERVER['REQUEST_URI'];
 }
 
+/**
+ * Returns request path.
+ *
+ * @return string
+ */
 function getPath(): string
 {
     if (isset($_SERVER['QUERY_STRING'])) {
@@ -63,11 +103,23 @@ function getPath(): string
     return $_SERVER['REQUEST_URI'];
 }
 
+/**
+ * Returns query string.
+ *
+ * @return string
+ */
 function getQueryString(): string
 {
     return $_SERVER['QUERY_STRING'] ?? '';
 }
 
+/**
+ * Returns header value.
+ *
+ * @param string $name Header name.
+ *
+ * @return string|null
+ */
 function getHeader(string $name)
 {
     $key = 'HTTP_' . str_replace('-', '_', strtoupper($name));
@@ -75,6 +127,11 @@ function getHeader(string $name)
     return $_SERVER[$key] ?? null;
 }
 
+/**
+ * Returns all headers.
+ *
+ * @return array<string, string>
+ */
 function getHeaders(): array
 {
     $headers = [];
@@ -89,21 +146,53 @@ function getHeaders(): array
     return $headers;
 }
 
+/**
+ * Returns GET/POST parameter.
+ *
+ * @param string $name    Parameter name.
+ * @param string $default Default value.
+ *
+ * @return string|null
+ */
 function getParameter(string $name, string $default = null)
 {
     return $_REQUEST[$name] ?? $default;
 }
 
+/**
+ * Returns GET parameter.
+ *
+ * @param string $name    Parameter name.
+ * @param string $default Default value.
+ *
+ * @return string|null
+ */
 function getQueryParameter(string $name, string $default = null)
 {
     return $_GET[$name] ?? $default;
 }
 
+/**
+ * Returns POST parameter.
+ *
+ * @param string $name    Parameter name.
+ * @param string $default Default value.
+ *
+ * @return string|null
+ */
 function getPostParameter(string $name, string $default = null)
 {
     return $_POST[$name] ?? $default;
 }
 
+/**
+ * Returns PUT parameter.
+ *
+ * @param string $name    Parameter name.
+ * @param string $default Default value.
+ *
+ * @return string|null
+ */
 function getPutParameter(string $name, string $default = null)
 {
     parse_str(file_get_contents("php://input"), $parameters);
@@ -111,6 +200,11 @@ function getPutParameter(string $name, string $default = null)
     return $parameters[$name] ?? $default;
 }
 
+/**
+ * Returns HTTP referer.
+ *
+ * @return string|null
+ */
 function getReferrer()
 {
     return $_SERVER['HTTP_REFERER'] ?? null;
