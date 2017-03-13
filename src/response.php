@@ -10,6 +10,9 @@ declare(strict_types=1);
 
 namespace Satori\Http\Response;
 
+/**
+ * @var array<int, string> Contains reason phrases for HTTP status codes.
+ */
 const REASON_PHRASE = [
     100 => 'Continue',
     101 => 'Switching Protocols',
@@ -73,6 +76,12 @@ const REASON_PHRASE = [
     511 => 'Network Authentication Required',
 ];
 
+/**
+ * Sends an HTTP status line.
+ *
+ * @param string $version The version of the HTTP protocol.
+ * @param int    $status  The status code.
+ */
 function sendStatusLine(string $version, int $status)
 {
     header(
@@ -82,11 +91,22 @@ function sendStatusLine(string $version, int $status)
     );
 }
 
+/**
+ * Sends an HTTP response header.
+ *
+ * @param string $name  The header name.
+ * @param string $value The header value.
+ */
 function sendHeader(string $name, string $value)
 {
     header($name . ': ' . $value, false);
 }
 
+/**
+ * Sends HTTP response headers.
+ *
+ * @param array<string, string> $headers The headers.
+ */
 function sendHeaders(array $headers)
 {
     foreach ($headers as $name => $value) {
@@ -94,7 +114,12 @@ function sendHeaders(array $headers)
     }
 }
 
+/**
+ * Sends an HTTP response body.
+ *
+ * @param string $body The HTTP response body.
+ */
 function sendBody(string $body)
 {
-    echo $body ?? '';
+    echo $body;
 }
