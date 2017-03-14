@@ -10,16 +10,37 @@ declare(strict_types=1);
 
 namespace Satori\Http\Session;
 
+/**
+ * Checks if a session variable is set.
+ *
+ * @param string $key The session variable name.
+ *
+ * @return bool
+ */
 function has(string $key): bool
 {
     return isset($_SESSION[$key]);
 }
 
+/**
+ * Returns a session variable value.
+ *
+ * @param string $key     The session variable name.
+ * @param mixed  $default The default value if the session variable does not exist.
+ *
+ * @return mixed
+ */
 function get(string $key, $default = null)
 {
     return $_SESSION[$key] ?? $default;
 }
 
+/**
+ * Sets a session variable.
+ *
+ * @param string $key   The session variable name.
+ * @param mixed  $value The value.
+ */
 function set(string $key, $value)
 {
     if (isset($_SESSION)) {
@@ -27,16 +48,21 @@ function set(string $key, $value)
     }
 }
 
+/**
+ * Removes a session variable.
+ *
+ * @param string $key The session variable name.
+ */
 function remove(string $key)
 {
     unset($_SESSION[$key]);
 }
 
-function regenerate(): bool
-{
-    return session_regenerate_id(true);
-}
-
+/**
+ * Starts a session.
+ *
+ * @param string $name The session name.
+ */
 function start(string $name = null)
 {
     if (isset($name)) {
@@ -45,11 +71,27 @@ function start(string $name = null)
     session_start();
 }
 
+/**
+ * Writes and closes the session.
+ */
 function release()
 {
     session_write_close();
 }
 
+/**
+ * Regenerates the session ID.
+ *
+ * @return bool True if the regeneration was successful.
+ */
+function regenerate(): bool
+{
+    return session_regenerate_id(true);
+}
+
+/**
+ * Destroys the session and deletes the session cookie.
+ */
 function destroy()
 {
     $_SESSION = [];
