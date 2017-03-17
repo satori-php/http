@@ -13,9 +13,6 @@
         "php": ">=7.0"
     },
     "autoload": {
-        "psr-4": {
-            "Satori\\Http\\": ["src/", "tests/"]
-        },
         "files": [
             "src/request.php",
             "src/response.php",
