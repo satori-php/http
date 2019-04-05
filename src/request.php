@@ -258,7 +258,7 @@ function getAccept()
  */
 function getAcceptCharset()
 {
-    return $_SERVER['HTTP_ACCEPT'] ?? null;
+    return $_SERVER['HTTP_ACCEPT_CHARSET'] ?? null;
 }
 
 /**
